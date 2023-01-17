@@ -1,2 +1,1 @@
-# Challenge18
-No SQL Social Network API
+# No SQL Social Network API
