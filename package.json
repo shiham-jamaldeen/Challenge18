@@ -1,6 +1,12 @@
 {
+  "name": "Challenge18",
+  "version": "1.0.0",
+  "description": "Social Network API that demonstrates Mongo DB with Mongoose",
+  "main": "server.js",
+  "license": "MIT",
   "scripts": {
-    "devStart": "nodemon server.js"
+    "devStart": "nodemon server.js",
+    "start": "node server.js"
   },
   "dependencies": {
     "express": "^4.18.2",
