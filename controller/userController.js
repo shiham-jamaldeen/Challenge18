@@ -24,21 +24,51 @@ module.exports = {
   //update user details by id
   editUser(req, res) {
     User.findOneAndUpdate(
-      req.params._id,
+      { _id: req.params._id },
       {
         username: req.body.username,
         email: req.body.email,
-        friends: [req.body.friends],
-        thoughts: [req.body.thoughts],
       },
-      { runValidators: true, new: true },
-      function (err, docs) {
-        if (err) {
-          console.log(err);
+      { runValidators: true, new: true }
+    )
+      .then((userData) => {
+        if (!userData) {
+          res.status(404).json({
+            message: "Sorry user ID was not found. Please try again!",
+          });
         } else {
-          console.log("updated: " + docs);
+          res.json(userData);
         }
-      }
-    );
+      })
+      .catch((error) => res.status(500).json(error));
+  },
+  //delete user
+  deleteUser(req, res) {
+    User.findOneAndDelete({ _id: req.params._id })
+      .then((userData) => {
+        if (!userData) {
+          res.status(404).json({
+            message: "Sorry user ID was not found. Please try again!",
+          });
+        } else {
+          console.log(userData);
+          res.json({ message: "User successfully deleted!" });
+        }
+      })
+      .catch((error) => res.status(500).json(error));
+  },
+  //add a friend to an existing user's friend list
+  addFriend(req, res) {
+    User.findOneAndUpdate(
+      { _id: req.params._id },
+      { $push: { friends: req.params.friendId } },
+      { new: true }
+    )
+      .then((data) => res.json(data))
+      .catch((error) => res.status(500).json(error));
+  },
+  //delete friend from user's friend list
+  deleteFriend(req, res) {
+    console.log("**delete friend route, success!**");
   },
 };

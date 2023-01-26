@@ -1,0 +1,34 @@
+[
+    {"thoughtText": "Here's a cool thought...",
+    "createdAt":"1674613631",
+    "username": "lernantino",
+    "userId": "63ccec43c1aad6b88ca8d01b",
+    "reactions": [{"reactionBody":"Cool thought Lernantino, I am very impressed 😀", "username":"johncitizen",  "createdAt":"1674613631"}]
+    },
+    {"thoughtText": "This idea is not good, we should focus on more",
+    "createdAt":"1674613631",
+    "username": "johncitizen",
+    "userId": "63ccec43c1aad6b88ca8d01c",
+    "reactions": [{"reactionBody":"That is not a fair comment! We need to discuss this 🤨", "username":"lernantino",  "createdAt":"1674613631"}]
+    },
+    {"thoughtText": "That was a boring discussion! Sorry",
+    "createdAt":"1674613631",
+    "username": "jasonmakki",
+    "userId": "63d0f4fff491808c1f778985",
+    "reactions": [{"reactionBody":"LOL 😆", "username":"johncitizen",  "createdAt":"1674613631"}]
+    },
+    {
+    "thoughtText": "Hi there my name is john.. i am a newbie",
+    "username": "johncitizen",
+    "userId": "63d0f4e5f491808c1f778983",
+    "reactions": [{"reactionBody":"Nice to meet you John. Welcome! 😀", "username":"jasonmakki"}]
+    }
+    {
+        "thoughtText": "I propose the idea of calling this sprint 'taxonomy'",
+        "username": "lernantino",
+        "userId": "63d214b9a18f0b0566c0af24"
+       
+
+    }
+
+]

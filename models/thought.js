@@ -1,4 +1,5 @@
 const { Schema, model, Types } = require("mongoose");
+const moment = require("moment");
 // TO DO write a helper utility to format date and time see https://stackoverflow.com/questions/60013688/how-to-save-date-in-dd-mm-yy-fromat-in-mongdb-using-mongoose-nodejs
 
 //schema to create Reaction model
@@ -11,18 +12,20 @@ const reactionSchema = new Schema({
   username: { type: String, required: true },
   createdAt: {
     type: Date,
-    default: Date.now(),
-    //TO DO get: (date) => timeSince(date),
+    default: Date.now,
+    get: (createdAt) =>
+      moment(createdAt).format("dddd, MMMM Do YYYY, h:mm:ss a"),
   },
 });
-//schema to create user model
+//schema to create thought model
 const thoughtSchema = new Schema(
   {
     thoughtText: { type: String, required: true, minLength: 1, maxLength: 280 },
     createdAt: {
       type: Date,
-      default: Date.now(),
-      //TO DO get: (date) => timeSince(date),
+      default: Date.now,
+      get: (createdAt) =>
+        moment(createdAt).format("dddd, MMMM Do YYYY, h:mm:ss a"),
     },
     username: { type: String, required: true },
     reactions: [reactionSchema], //[Array of nested documents created with the reactionSchema],
