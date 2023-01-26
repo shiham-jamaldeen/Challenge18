@@ -69,6 +69,18 @@ module.exports = {
   },
   //delete friend from user's friend list
   deleteFriend(req, res) {
-    console.log("**delete friend route, success!**");
+    User.findOneAndUpdate(
+      { _id: req.params._id },
+      { $pull: { friends: req.params.friendId } }
+    )
+      .then((friendData) => {
+        console.log(friendData);
+        if (!friendData) {
+          res.json({ message: "Sorry no friend id found. Please try again!" });
+        } else {
+          res.json({ message: "Success!Friend removed." });
+        }
+      })
+      .catch((error) => res.status(500).json(error));
   },
 };

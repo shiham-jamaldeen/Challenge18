@@ -45,7 +45,7 @@ module.exports = {
       })
       .catch((error) => res.json(error));
   },
-  editThough(req, res) {
+  editThoughByID(req, res) {
     Thought.findByIdAndUpdate(
       { _id: req.params._id },
       {
@@ -61,6 +61,21 @@ module.exports = {
         } else {
           res.json(thoughtData);
           console.log(thoughtData);
+        }
+      })
+      .catch((error) => res.json(error));
+  },
+  //delete a thought by thought by id
+  deleteThoughtByID(req, res) {
+    Thought.findByIdAndDelete({ _id: req.params._id })
+      .then((thoughtData) => {
+        console.log(thoughtData);
+        if (!thoughtData) {
+          res.status(404).json({
+            message: "Sorry thought ID was not found. Please try again",
+          });
+        } else {
+          res.status(200).json({ message: "Success, thought was deleted!" });
         }
       })
       .catch((error) => res.json(error));
@@ -87,6 +102,24 @@ module.exports = {
           });
         } else {
           res.status(200).json(thoughtData);
+        }
+      })
+      .catch((error) => res.json(error));
+  },
+  //delete a reaction by providing the reaction id
+  deleteReactionByID(req, res) {
+    Thought.findByIdAndUpdate(
+      { _id: req.params._id },
+      { $pull: { reactions: { reactionId: req.params.reactionId } } },
+      { new: true }
+    )
+      .then((reactionData) => {
+        if (!reactionData) {
+          res.status(404).json({
+            message: "Sorry reaction ID was not found. Please try again!",
+          });
+        } else {
+          res.status(200).json(reactionData);
         }
       })
       .catch((error) => res.json(error));
