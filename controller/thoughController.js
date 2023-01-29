@@ -27,22 +27,14 @@ module.exports = {
   createThought(req, res) {
     Thought.create(req.body)
       .then((thoughtData) => {
+        console.log(thoughtData);
         return User.findOneAndUpdate(
-          { _id: req.body.userId },
-          { $addToSet: { thoughts: thoughtData._id } },
-          { new: true }
+          { _id: req.body.userID },
+          { $push: { thoughts: thoughtData._id } },
+          { new: true, runValidators: true }
         );
       })
-      .then((thoughtData) => {
-        if (!thoughtData) {
-          res.status(404).json({
-            message: "No user ID was found",
-          });
-        } else {
-          res.json(thoughtData);
-          console.log(thoughtData);
-        }
-      })
+      .then((thoughtData) => res.json(thoughtData))
       .catch((error) => res.json(error));
   },
   editThoughByID(req, res) {
