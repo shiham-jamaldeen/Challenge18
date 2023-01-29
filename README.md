@@ -9,7 +9,7 @@ A video recording is available on Youtube, see **Demo video** for details.
 - [Key features](#key-features)
 - [Technology stack](#Technology-stack)
 - [Installation](#Installation)
-- Demo and walkthrough(#Demo-and-walkthrough)
+- [Demo and walkthrough](#Demo-and-walkthrough)
 
 ## Key features
 - Create new users
