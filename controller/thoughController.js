@@ -29,7 +29,7 @@ module.exports = {
       .then((thoughtData) => {
         console.log(thoughtData);
         return User.findOneAndUpdate(
-          { _id: req.body.userID },
+          { _id: req.body.userId },
           { $push: { thoughts: thoughtData._id } },
           { new: true, runValidators: true }
         );
