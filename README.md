@@ -38,6 +38,7 @@ A video recording is available on Youtube, see **Demo video** for details.
 
 ### Summary of API Routes
 
+```
 GET Methods:
 - /api/users
 - /api/users/:_id
@@ -57,5 +58,6 @@ PUT Methods:
 DELETE Methods:
 - /api/users/:_id
 - /api/thoughts/:_id
-- - /api/users/:_userId/friends/:_friendId
+- /api/users/:_userId/friends/:_friendId
 - /api/thoughts/:_thoughtId/reactions/:_reactionId
+```
